@@ -126,8 +126,19 @@
     echo $txt."<br>";
     
     //11
+    $serch = array(",", ".", ";", ":", "-", "!", "?", "(", ")");
     $txt = array("Don't Be a Menace to South Central While Drinking Your Juice in the Hood", "Tik nereikia gąsdinti Pietu Centro, geriant sultis pas save kvartale");
-    
+    $words1 = str_replace($serch, "", $txt[0]);
+    $words1 = explode(" ", $words1);
+    $words2 = str_replace($serch, "", $txt[1]);
+    $words2 = explode(" ", $words2);
+    $words = array_merge($words1, $words2);
+    $keys = array_rand($words, 9);
+    $txt ="";
+    for ($i=0; $i < 9; $i++) { 
+        $txt = $txt. " " . $words[$keys[$i]];
+    }
+    echo $txt."<br>";
 
     
     

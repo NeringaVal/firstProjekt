@@ -46,6 +46,94 @@
     else  {
         echo "<p> negalima</p>";
     }
+
+    //tekstas stringai
+
+    //1
+    $nameFirst = "Kaen";
+    $nameLast = "Revu";
+
+    if (strlen($nameFirst) > strlen($nameLast)) echo $nameLast."<br>";
+    else if (strlen($nameFirst) < strlen($nameLast)) echo $nameFirst."<br>";
+         else echo $nameFirst. " " . $nameLast."<br>";
+
+    //2
+    $nameFirst = "Kaen";
+    $nameLast = "Revu";
+    echo strtoupper($nameFirst). " " . strtolower($nameLast)."<br>";
+    
+    //3
+    $letter = $nameFirst[0].$nameLast[0];
+    echo $letter."<br>";
+
+    //4
+    $ilgisFirst = strlen($nameFirst);
+    $ilgisLast = strlen($nameLast);
+    $word = substr($nameFirst, $ilgisFirst - 3). substr($nameLast, $ilgisLast - 3);
+    echo $word."<br>";
+
+    //5
+    $txt = "An American in Paris";
+    $serch = array("a", "A");
+    $newTxt = str_replace($serch, "*", $txt);
+    echo $newTxt."<br>";
+
+    //6
+    $txt = "An American in Paris";
+    $a = substr_count($txt, "a");
+    $A = substr_count($txt, "A");
+    echo $a + $A."<br>";
+
+    //7
+    $txt = array("An American in Paris", "Breakfast at Tiffany", "2001: A Space Odyssey", "It's a Wonderful Life");
+    $serch = array("a", "e", "i", "o", "u", "A", "E", "I", "O", "U");
+    $ilgis = count($txt);
+    for ($i=0; $i < $ilgis; $i++) { 
+        $newTxt = str_replace($serch, "", $txt[$i]);
+        echo $newTxt."<br>";
+    }
+
+    //8
+    $txt =  'Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope';
+    echo $txt."<br>";
+    
+    
+    //9
+    $serch = array(",", ".", ";", ":", "-", "!", "?", "(", ")");
+    $txt = array("Don't Be a Menace to South Central While Drinking Your Juice in the Hood", "Tik nereikia gąsdinti Pietu Centro, geriant sultis pas save kvartale");
+    foreach ($txt as $txts){
+        $kiek = 0;
+        $words = str_replace($serch, "", $txts);
+        $words = explode(" ", $words);
+        $ilgis = count($words);
+        for ($i=0; $i < $ilgis; $i++) { 
+            if (strlen($words[$i]) <= 5) {  //kodel lietuvisko nepriima
+                $kiek++;
+            }
+        }
+        echo $kiek."<br>";
+    }
+    
+
+    //10
+    $txt = "";
+	$characters = array_merge(range('A','Z'), range('a','z'));
+	$max = count($characters) - 1;
+	for ($i = 0; $i < 3; $i++) {
+		$rand = mt_rand(0, $max);
+		$txt .= $characters[$rand];
+	}
+    echo $txt."<br>";
+    
+    //11
+    $txt = array("Don't Be a Menace to South Central While Drinking Your Juice in the Hood", "Tik nereikia gąsdinti Pietu Centro, geriant sultis pas save kvartale");
+    
+
+    
+    
+
+
+
  
 ?>
 </body>

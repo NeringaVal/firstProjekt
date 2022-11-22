@@ -11,98 +11,7 @@
     <?php
     
 
-    echo "3.02". "<br>";
-    $count = 0;
-    for ($i=0; $i < 300; $i++) { 
-        $num = rand(0, 300);
-        if ($num > 275)  {
-            echo '<span style="color: red;"> ' . $num. " ". '</span>';
-        } else echo $num. " ";
-        if ($num > 150) $count++;
-    }
-    echo "<br>";
-    echo "count = ". $count."<br>";
     
-    echo "<br>";
-    echo "3.03". "<br>";
-    $num = rand(3000, 4000);
-    for ($i=77; $i < $num ; $i+=77) { 
-        if ($num - $i > 77 ) echo $i. ",";
-        else echo $i;
-    }
-
-    echo "<br>";
-    echo "<br>";
-    echo "3.06". "<br>";
-    echo "a". "<br>";
-    $num = rand(0, 1);
-    while ($num != 0) {
-        echo "S";
-        $num = rand(0, 1);
-    }
-    echo "H". "<br>";
-    echo "b". "<br>";
-    $count = 0;
-    while ($count < 3) {
-        $num = rand(0, 1);
-        if ($num == 1) echo "S";
-        else {
-            echo "H";
-            $count++;
-        }
-        
-    }
-    echo "<br>";
-    echo "c". "<br>";
-    $count = 0;
-    $log = false;
-    while ($count < 3) {
-        $num = rand(0, 1);
-        if ($num == 1) {
-            echo "S";
-            $log = false;
-        }
-        else {
-            echo "H";
-            $log = true;
-        }
-        if ($log) $count++;
-        else $count = 0;
-    }
-    echo "<br>";
-    echo "<br>";
-    echo "3.10". "<br>";
-    echo "a". "<br>";
-    
-    $count = 0;
-    for ($i=0; $i < 5; $i++) { 
-        $ilgis = 85;
-        while ($ilgis > 0) {
-            $smugis = rand(5, 20);
-            $count++;
-            $ilgis -= $smugis;
-        }
-    }
-    echo "Smugiu prireiks: ". $count. "<br>";
-
-    echo "b". "<br>";
-    
-    $count = 0;
-    for ($i=0; $i < 5; $i++) { 
-        $ilgis = 85;
-        while ($ilgis > 0) {
-            $pataikyta =rand(0, 1);
-            if ($pataikyta == 1){
-                $smugis = rand(20, 30);
-                $ilgis -= $smugis;
-            }     
-            $count++;
-        }
-    }
-    echo "Smugiu prireiks: ". $count. "<br>";
-
-    echo "<br>";
-
     echo "Masyvai". "<br>";
     echo "4.01". "<br>";
     
@@ -191,26 +100,69 @@
     echo "4.03". "<br>";
     
     $a_d = "ABCD";
-    $rand_letter = "";
     for ($i=0; $i < 200; $i++) { 
         $int = rand(0,3);
-        $rand_letter = $rand_letter. $a_d[$int];
+        $rand_letter[$i] = $a_d[$int];
     }
-    echo $rand_letter. "<br>";
-    $a = substr_count($rand_letter, "A");
+    print_r($rand_letter);
+    echo "<br>";
+    $str = implode("", $rand_letter);
+    $a = substr_count($str, "A");
     echo "A: ". $a."<br>";
-    $b = substr_count($rand_letter, "B");
+    $b = substr_count($str, "B");
     echo "B: ". $b."<br>";
-    $c = substr_count($rand_letter, "C");
+    $c = substr_count($str, "C");
     echo "C: ". $c."<br>";
-    $d = substr_count($rand_letter, "D");
+    $d = substr_count($str, "D");
     echo "D: ". $d."<br>";
 
     echo "4.04". "<br>";
-    $sort = str_split($rand_letter);
-    sort($sort);
-    $sort = implode($sort);
-    echo $sort."<br>";;
+    
+    sort($rand_letter);
+    print_r($rand_letter);
+    echo "<br>";
+
+    echo "4.05". "<br>";
+    $a_d = "ABCD";
+    for ($i=0; $i < 200; $i++) { 
+        $int = rand(0,3);
+        $rand_1[$i] = $a_d[$int];
+    }
+    echo "Pirmas:"."<br>";
+    print_r($rand_1);
+    echo "<br>";
+    for ($i=0; $i < 200; $i++) { 
+        $int = rand(0,3);
+        $rand_2[$i] = $a_d[$int];
+    }
+    echo "Antras:"."<br>";
+    print_r($rand_2);
+    echo "<br>";
+    for ($i=0; $i < 200; $i++) { 
+        $int = rand(0,3);
+        $rand_3[$i] = $a_d[$int];
+    }
+    echo "Trečias:"."<br>";
+    print_r($rand_3);
+    echo "<br>";
+    for ($i=0; $i < 200; $i++){
+        $suma[$i] = $rand_1[$i]. $rand_2[$i]. $rand_3[$i];
+    }
+    echo "Suma:"."<br>";
+    print_r($suma);
+    echo "<br>";
+    $r = array_filter(array_count_values($suma), function($v) { return $v == 1; });
+    echo "Atrinkti nepasikartojantys:"."<br>";
+    print_r($r);
+    echo "<br>";
+    echo count($r)."<br>";
+
+    echo "4.06". "<br>";
+    $random_number_array = range(0, 100);
+    shuffle($random_number_array );
+    $random_number_array = array_slice($random_number_array ,0,10);
+
+    print_r($random_number_array);
 ?>
 </body>
 </html>

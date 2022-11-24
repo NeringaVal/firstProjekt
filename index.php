@@ -79,7 +79,9 @@
     echo "<br>";
 
     echo "6.06". "<br>";
-    function Masyvas(){
+    function Masyvas($m){
+        
+        
         $array = [];
         $n = rand(10, 20);
         echo $n."<br>";
@@ -89,9 +91,10 @@
         return $array;
     }
     $array = Masyvas();
-    $array[] = Masyvas();
+    $array[] = 0;
 
-
+    $m = rand(10, 30);
+    $array = Masyvas($m);
     echo "Pradinis <br>";
     print_r($array);
     echo "<br>";

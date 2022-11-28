@@ -78,26 +78,47 @@
     }
     echo "<br>";
 
-    echo "6.06". "<br>";
+    echo "6.07". "<br>";
     function Masyvas($m){
         
         
         $array = [];
         $n = rand(10, 20);
-        echo $n."<br>";
         for ($i=0; $i < $n - 1; $i++) { 
             $array[$i] = rand(0, 10);
         }
+        if ($m == 1) {
+            $array[$n - 1] = 0;
+        }
+        else {
+            $array[$n - 1] = Masyvas($m - 1);
+        }
+
         return $array;
     }
-    $array = Masyvas();
-    $array[] = 0;
+  
 
     $m = rand(10, 30);
+    echo "m= ". $m."<br>";
+    $array = [];
     $array = Masyvas($m);
     echo "Pradinis <br>";
     print_r($array);
     echo "<br>";
+
+    echo "6.08". "<br>";
+    function Suma($array, $m){
+        $sum = 0;
+        $kiek = sizeof($array) - 1;
+        for ($i=0; $i < $kiek; $i++) { 
+            $sum += $array[$i];
+        }
+        echo "Suma ". $m . " žingsnyje ". $sum."<br>";
+        if ($m == 1) echo "Sumos suskaičiuotos.<br>";
+        else Suma($array[$kiek], $m);
+    }
+
+    Suma($array, $m);
 ?>
 </body>
 </html>

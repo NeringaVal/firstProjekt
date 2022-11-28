@@ -113,12 +113,35 @@
         for ($i=0; $i < $kiek; $i++) { 
             $sum += $array[$i];
         }
-        echo "Suma ". $m . " žingsnyje ". $sum."<br>";
+        echo "Suma = ". $sum."<br>";
         if ($m == 1) echo "Sumos suskaičiuotos.<br>";
-        else Suma($array[$kiek], $m);
+        else Suma($array[$kiek], $m - 1);
     }
 
     Suma($array, $m);
+
+    echo "6.09". "<br>";
+    $array = [];
+    for ($i=0; $i < 3; $i++) { 
+        $array[$i] = rand(1, 33);
+    }
+    $nr = 3;
+    while(true){
+        $num1 = Dalijasi($array[$nr - 1]);
+        $num2 = Dalijasi($array[$nr - 2]);
+        $num3 = Dalijasi($array[$nr - 3]);
+        if ($num1 === 0 and $num2 === 0 and $num3 === 0) {
+            break;
+        }
+        else {
+            $array[$nr] = rand(1, 33);
+            $nr++;
+        }
+        
+    }
+    echo "Pradinis <br>";
+    print_r($array);
+    echo "<br>";
 ?>
 </body>
 </html>
